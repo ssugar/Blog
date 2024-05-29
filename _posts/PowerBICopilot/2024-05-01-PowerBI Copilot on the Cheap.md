@@ -5,7 +5,7 @@ date:   2024-05-01 19:21:27 -0400
 categories: copilot fabric
 ---
 
-# Copilot for PowerBI on the Cheap
+## Introduction
 
 Copilot for PowerBI offers a transformative experience for data analysis and visualization, providing users with advanced AI capabilities to enhance their Power BI usage. However, it's important to note that while Copilot can significantly boost productivity and insights, running high-capacity SKUs like the Fabric F64 capacity 24/7 can lead to substantial costs which makes it difficult for individuals and small/medium businesses to adopt this technology. 
 

@@ -5,7 +5,7 @@ date:   2024-05-06 19:21:27 -0400
 categories: fabric git
 ---
 
-## Using Git in Fabric Notebooks
+## Introduction
 
 When working in Fabric Notebooks, sometimes it can become necessary to clone a repository for use in the notebook.  One example of this necessity is when working with DBT packages for data transformation.
 

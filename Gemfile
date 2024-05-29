@@ -38,3 +38,4 @@ group :jekyll_plugins do
 end
 
 gem 'jemoji'
+gem "webrick", "~> 1.8"

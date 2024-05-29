@@ -16,7 +16,7 @@ We will be using the `jaffle-shop-classic` repository instead of the newer `jaff
 You'll need:
 1. An MS Entra App (service principal) with Contributor permissions on a Fabric Workspace 
 2. An Azure Key Vault - the user running the notebook will need access to GET secrets
-3. Git Installed in the same Fabric Workspace - see [Using Git in Fabric]({% link _posts/Fabric/2024-05-06-UsingGitInFabric.md %})
+3. Git Installed in the same Fabric Workspace - see [Using Git in Fabric]({{ site.baseurl }}{% link _posts/Fabric/2024-05-06-UsingGitInFabric.md %})
 4. A Fabric Warehouse
 5. A Fabric Notebook
 
@@ -43,7 +43,7 @@ dbt --version
 git clone https://github.com/dbt-labs/jaffle-shop-classic/
 ```
 
-*Note this will only work if you've followed the instructions at [Using Git in Fabric]({% link _posts/Fabric/2024-05-06-UsingGitInFabric.md %})*
+*Note this will only work if you've followed the instructions at [Using Git in Fabric]({{ site.baseurl }}{% link _posts/Fabric/2024-05-06-UsingGitInFabric.md %})*
 
 ## **Step 3: Setting Up the `dbt-fabric` Adapter**
 

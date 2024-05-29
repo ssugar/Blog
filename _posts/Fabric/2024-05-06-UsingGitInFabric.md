@@ -2,7 +2,7 @@
 layout: post
 title:  "Using Git in Fabric Notebooks"
 date:   2024-05-06 19:21:27 -0400
-categories: fabric DBT
+categories: fabric git
 ---
 
 ## Using Git in Fabric Notebooks

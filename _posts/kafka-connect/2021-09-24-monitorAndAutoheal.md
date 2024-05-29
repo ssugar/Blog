@@ -5,8 +5,6 @@ date:   2021-09-24 19:21:27 -0400
 categories: kafka kafka-connect
 ---
 
-## Introduction
-
 [Kafka-Connect](https://www.confluent.io/product/confluent-connectors) is part of the larger [Apache Kafka](https://kafka.apache.org/) ecosystem.  Here at ProServeIT, we typically run Kafka using [Confluent Cloud on Azure](https://www.confluent.io/azure).  While there are a variety of [fully managed Confluent connectors](https://docs.confluent.io/cloud/current/connectors/index.html) that allow for data acquisition into Confluent's fully managed Kafka instances, there are some situations where [self-managed connectors](https://docs.confluent.io/home/connect/supported.html) are required (either due to security requirements, or because a fully managed connector doesn't yet exist).  In those cases, you'll often need to run Kafka-Connect yourself, and monitoring and management of the self-managed connectors becomes your task to ensure that your real-time streams of data stay up and running.
 
 ### Monitoring and Auto-Healing

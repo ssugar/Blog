@@ -5,8 +5,6 @@ date:   2024-05-01 19:21:27 -0400
 categories: copilot fabric
 ---
 
-## Introduction
-
 Copilot for PowerBI offers a transformative experience for data analysis and visualization, providing users with advanced AI capabilities to enhance their Power BI usage. However, it's important to note that while Copilot can significantly boost productivity and insights, running high-capacity SKUs like the Fabric F64 capacity 24/7 can lead to substantial costs which makes it difficult for individuals and small/medium businesses to adopt this technology. 
 
 Leveraging the power of Azure Automation and PowerShell, you can efficiently manage your PowerBI Fabric F64 capacity to use with Copilot for Power BI without breaking the bank. This guide will walk you through the process of using an Azure Automation Runbook in conjunction with a local PowerShell script to start your Fabric F64 capacity for a set duration and then automatically stop it, ensuring you only pay for what you use.

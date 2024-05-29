@@ -5,8 +5,6 @@ date:   2024-05-09 19:21:27 -0400
 categories: fabric DBT
 ---
 
-## Introduction
-
 Transforming your data warehouse just got easier with the ability to run DBT (Data Build Tool) completely inside a Fabric Notebook. This guide will walk you through the process using the `jaffle-shop-classic` GitHub repository and connecting to a Fabric Warehouse using the `dbt-fabric` adapter.  All of this will be accomplished within the context of a Fabric Notebook - no need for any local development.
 
 We will be using the `jaffle-shop-classic` repository instead of the newer `jaffle-shop` repository as the classic version does not have warehouse specific macros which result in errors with the `dbt-fabric` adapter

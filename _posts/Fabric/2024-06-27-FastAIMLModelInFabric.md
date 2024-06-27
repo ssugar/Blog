@@ -173,4 +173,6 @@ Result from the notebook should look like this:
 
 ## Conclusion
 
-As we wrap up this technical walkthrough, you're now equipped with the knowledge to train and deploy a fastai vision model in Microsoft Fabric that can differentiate between pangolins and armadillos - or other creatures if you change the search terms :smiley:. This journey through the intricacies of machine learning within Microsoft's powerful platform has shown that with the right tools and guidance, creating precise and efficient models is within reach. We hope this blog has illuminated the path for your own projects and inspired you to leverage fastai and Microsoft Fabric for your machine learning endeavors. Happy modeling, and may your data always steer you towards insightful discoveries!
+As we wrap up this technical walkthrough, you're now equipped with the knowledge to train and deploy a fastai vision model in Microsoft Fabric that can differentiate between pangolins and armadillos - or other creatures if you change the search terms :smiley:. 
+
+This journey through the intricacies of deep learning within Microsoft Fabric has shown that with the right tools and guidance, creating precise and efficient models is within reach. We hope this blog has illuminated the path for your own projects and inspired you to leverage fastai and Microsoft Fabric for your deep learning endeavors.

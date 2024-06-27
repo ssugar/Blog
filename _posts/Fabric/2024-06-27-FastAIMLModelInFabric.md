@@ -56,7 +56,7 @@ failed.map(Path.unlink);
 failed
 ```
 
-Some warnings/errors will show up in the output of the abvoe cell, they can be ignored.
+Some warnings/errors will show up in the output of the above cell, they can be ignored.
 
 Create the fastai [datablock](https://docs.fast.ai/data.block.html), load in the downloaded pictures, and display 9 of them in the cell output.
 

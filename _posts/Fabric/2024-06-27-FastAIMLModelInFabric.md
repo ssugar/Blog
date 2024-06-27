@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Building a FastAI ML Model in Fabric"
+title:  "Building a FastAI Vision Model in Fabric"
 date:   2024-06-27 10:28:27 -0400
 categories: fabric, ml, fastai, mlflow
 ---
@@ -155,7 +155,7 @@ Load the ML model we trained and saved.
 model = mlflow.fastai.load_model(f"runs:/[[enter your runID here]]/model")
 ```
 
-:information: To be honest, I'm not sure if the above is the correct way to load a saved model in Fabric.  The "Apply this version" code that Fabric can auto-create didn't work for me and the above does allow me to make predictions from a separate Fabric notebook, so I'm going with this for now.  If you know the correct way to load a saved model, please do let me know.
+:information_source: To be honest, I'm not sure if the above is the correct way to load a saved model in Fabric.  The "Apply this version" code that Fabric can auto-create didn't work for me and the above does allow me to make predictions from a separate Fabric notebook, so I'm going with this for now.  If you know the correct way to load a saved model, please do let me know.
 
 Run the predict function with the image we just downloaded to see if it's a pangolin or an armadillo.  Include the result variable to see how confident the model is with it's prediction.
 

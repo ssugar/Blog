@@ -5,7 +5,7 @@ date:   2024-06-27 10:28:27 -0400
 categories: fabric, ml, fastai, mlflow
 ---
 
-Embarking on the journey of machine learning can be both thrilling and daunting, but with the right tools, it's like unlocking a new realm of possibilities.  In this article Fastai's user-friendly design meets Microsoft Fabric's robust platform, making your ML journey smoother and quicker. Follow this blog for a no-nonsense guide to getting a basic vision fastai model ready for action in Microsoft Fabric.
+Diving into the world of deep learning with Microsoft Fabric, we're setting our sights on a fascinating challenge: distinguishing between pangolins and armadillos using a fastai vision model. This blog will serve as your technical guide to train and deploy a model that can accurately tell these creatures apart. With Microsoft Fabric's advanced analytics capabilities, we'll harness the power of fastai to create a model that's not only effective but also quick to set up and deploy. So, whether you're a data enthusiast or a seasoned analyst, join us as we explore the intricacies of machine learning and unveil the steps to achieve this intriguing task.
 
 Inspiration for this article and many of the details on how to get this working are derived from the amazing [Practical Deep Learning for Coders](https://course.fast.ai/) course.  My contributions here are how to get this working in Fabric with mlflow.  To better understand the code in this blog (e.g. what is a datablock?), check out lesson 1 of the above course.
 
@@ -22,10 +22,13 @@ Next, click on "Start with a new Notebook"
 ## Train your model
 The following commands will download pangolin and armadillo images, create a datablock and train your ML model using mlflow and fastai.  Add these to your new Notebook.  Each section can be it's own cell in your notebook.
 
+Install and import requirements
+
 ```python
 !pip install fastbook
 from fastbook import *
 ```
+Download images of pangolins and armadillos using duck duck go
 
 ```python
 #search and save images using duckduckgo (ddg)
@@ -44,6 +47,7 @@ if not path.exists():
 
 Some warnings/errors will show up in the output of the above cell, they can be ignored.
 
+Remove any failed downloads or files that aren't valid images
 
 ```python
 #remove any bad images (images that can't be opened)
@@ -53,6 +57,8 @@ failed
 ```
 
 Some warnings/errors will show up in the output of the abvoe cell, they can be ignored.
+
+Create the fastai [datablock](https://docs.fast.ai/data.block.html), load in the downloaded pictures, and display 9 of them in the cell output.
 
 ```python
 #create your fastai datablock
@@ -66,6 +72,8 @@ dls = DataBlock(
 
 dls.show_batch(max_n=9)
 ```
+
+Train your vision model.  In this case we're using resnet18 as our base model and only training for 1 epoch.  Increasing the number of epochs and/or changing the base model can improve model accuracy.
 
 ```python
 #train and track your model using mlflow and fastai.  For test/demo purposes, we'll only do a 1 epoch of training
@@ -120,7 +128,9 @@ Open up the ML Model you created, expand Version 1, expand model, click on MLmod
 
 ## Load and Predict
 
-Create a new notebook in your workspace.  Add the following code to your notebook:
+Create a new notebook in your workspace.  Add the following code to your notebook.
+
+Install and import required modules and download a single image of a creature - could be a pangolin or an armadillo - it's up to you.
 
 ```python
 !pip install fastbook
@@ -138,12 +148,16 @@ im = Image.open(dest)
 im.to_thumb(256, 256)
 ```
 
+Load the ML model we trained and saved.
+
 ```python
 #load the model via the runID
 model = mlflow.fastai.load_model(f"runs:/[[enter your runID here]]/model")
 ```
 
-To be honest, I'm not sure if the above is the correct way to load a saved model in Fabric.  The "Apply this version" code that Fabric can auto-create didn't work for me and the above does allow me to make predictions from a separate Fabric notebook, so I'm going with this for now.  If you know the correct way to load a saved model, please do let me know.
+:information: To be honest, I'm not sure if the above is the correct way to load a saved model in Fabric.  The "Apply this version" code that Fabric can auto-create didn't work for me and the above does allow me to make predictions from a separate Fabric notebook, so I'm going with this for now.  If you know the correct way to load a saved model, please do let me know.
+
+Run the predict function with the image we just downloaded to see if it's a pangolin or an armadillo.  Include the result variable to see how confident the model is with it's prediction.
 
 ```python
 #use the loaded model to see if the image was a pangolin or armadillo
@@ -156,3 +170,5 @@ Result from the notebook should look like this:
 ![modelPrediction]({{ site.baseurl }}/assets/images/modelPrediction.png)
 
 ## Conclusion
+
+As we wrap up this technical walkthrough, you're now equipped with the knowledge to train and deploy a fastai vision model in Microsoft Fabric that can differentiate between pangolins and armadillos - or other creatures. This journey through the intricacies of machine learning within Microsoft's powerful platform has shown that with the right tools and guidance, creating precise and efficient models is within reach. We hope this blog has illuminated the path for your own projects and inspired you to leverage fastai and Microsoft Fabric for your machine learning endeavors. Happy modeling, and may your data always steer you towards insightful discoveries!

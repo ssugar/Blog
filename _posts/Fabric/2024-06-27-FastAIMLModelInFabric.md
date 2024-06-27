@@ -109,6 +109,8 @@ main()
 After running all the above cells, you should see something like this as the output of the final cell:
 ![trainingComplete]({{ site.baseurl }}/assets/images/trainingComplete.png)
 
+:information_source: The accuracy of this model is only 86% (1 - 0.138888 * 100), adding more epochs or changing the base model will help improve this.
+
 You should also see a new Experiment in your workspace (you may need to refresh your browser window):
 ![mlExperiment]({{ site.baseurl }}/assets/images/mlExperiment.png)
 
@@ -171,4 +173,4 @@ Result from the notebook should look like this:
 
 ## Conclusion
 
-As we wrap up this technical walkthrough, you're now equipped with the knowledge to train and deploy a fastai vision model in Microsoft Fabric that can differentiate between pangolins and armadillos - or other creatures. This journey through the intricacies of machine learning within Microsoft's powerful platform has shown that with the right tools and guidance, creating precise and efficient models is within reach. We hope this blog has illuminated the path for your own projects and inspired you to leverage fastai and Microsoft Fabric for your machine learning endeavors. Happy modeling, and may your data always steer you towards insightful discoveries!
+As we wrap up this technical walkthrough, you're now equipped with the knowledge to train and deploy a fastai vision model in Microsoft Fabric that can differentiate between pangolins and armadillos - or other creatures if you change the search terms :smiley:. This journey through the intricacies of machine learning within Microsoft's powerful platform has shown that with the right tools and guidance, creating precise and efficient models is within reach. We hope this blog has illuminated the path for your own projects and inspired you to leverage fastai and Microsoft Fabric for your machine learning endeavors. Happy modeling, and may your data always steer you towards insightful discoveries!

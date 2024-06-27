@@ -26,6 +26,7 @@ author: ssugar
 navbar-links:
   About: "about"
   GitHub: "https://github.com/ssugar"
+  HuggingFace: "https://huggingface.co/ssugar"
 
 ################
 # --- Logo --- #

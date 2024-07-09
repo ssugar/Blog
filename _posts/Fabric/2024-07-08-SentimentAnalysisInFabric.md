@@ -37,7 +37,7 @@ Install requirements
 %pip install -U -q mlflow
 ```
 
-Download the IMDB dataset and create small training and testing datasets.  Note the range(####) sections.  Those can be increased (better accuracy) or decreased (faster run) as desired.
+Download the IMDB dataset and create small training and testing datasets.  Note the range(####) sections.  Those can be increased (better accuracy) or decreased (faster run) as desired.  The 3000/300 split in the cell below takes around 2.5 hours to run in Fabric.
 
 ```python
 from datasets import load_dataset

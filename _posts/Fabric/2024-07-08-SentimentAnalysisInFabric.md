@@ -14,7 +14,7 @@ Inspiration for this article and many of the details on how to get this working 
 ## Create an ML Model
 
 To start with, create a new ML model in the Data Science section of Microsoft Fabric
-![createMLModel]({{ site.baseurl }}/assets/images/createMLModel.png)
+![createMLModel]({{ site.baseurl }}/assets/images/Sentiment-createMLModel.png)
 
 You'll be asked to name your model, as we'll be performing Sentiment Analysis, I've creatively named mine SentimentAnalysis
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sentiment Analysis with HuggingFace Transformers: Practical NLP in Fabric"
-date:   2024-06-27 10:28:27 -0400
+date:   2024-07-09 10:28:27 -0400
 categories: fabric, ml, hugging face, mlflow
 ---
 

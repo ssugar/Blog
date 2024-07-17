@@ -49,18 +49,21 @@ Convert the dataset to a pandas dataframe.
 df = churn['train'].to_pandas()
 df
 ```
+![originalDF]({{ site.baseurl }}/assets/images/Churn-OriginalDF.png)
 
 Check for any empty values - none are found in this dataset
 
 ```python
 df.isna().sum()
 ```
+![isEmpty]({{ site.baseurl }}/assets/images/Churn-IsEmpty.png)
 
 Check the dataframes data types
 
 ```python
 df.dtypes
 ```
+![originalDtypes]({{ site.baseurl }}/assets/images/Churn-OriginalDtypes.png)
 
 Note that TotalCharges is an object datatype, that is because it actually has some empty rows with just ' '.  For the purposes of this notebook, I'll be recalculating TotalCharges as tenure x MonthlyCharges.
 
@@ -73,7 +76,9 @@ Now we'll convert SeniorCitizen to a dataframe (as it's actually going to be a c
 ```python
 df = df.astype({'SeniorCitizen': 'object'})
 df = df.astype({'TotalCharges': 'float'})
+df.dtypes
 ```
+![UpdatedDtypes]({{ site.baseurl }}/assets/images/Churn-UpdatedDtypes.png)
 
 Now we'll try to automate splitting our columns into dependent variable (what we're trying to predict), categorical, and continuous fields.  We'll also be removing the customerID field from the training and validation data.  We're going to assume that all non-numeric variables are going to be categorical.
 
@@ -130,6 +135,7 @@ And take a quick peek at our training dataset
 ```python
 trn_xs.head()
 ```
+![Churn-UpdatedDataframe]({{ site.baseurl }}/assets/images/Churn-UpdatedDataframe.png)
 
 Just for some fun, let's first try to create a small Decision Tree classifier and see how it does in predicting Churn
 
@@ -140,6 +146,7 @@ from sklearn.tree import DecisionTreeClassifier
 m = DecisionTreeClassifier(max_leaf_nodes=4).fit(trn_xs, trn_y);
 mean_absolute_error(val_y, m.predict(val_xs))
 ```
+![Churn-DTree1-MAE]({{ site.baseurl }}/assets/images/Churn-DTree1-MAE.png)
 
 In my test, I see it getting an absolute error of 0.22487.  We can increase the size of the tree to get a better result.  In the next cell we're allowing our tree to grow until the leaf nodes have no less than 50 rows (samples) in them.
 
@@ -148,6 +155,7 @@ m = DecisionTreeClassifier(min_samples_leaf=50)
 m.fit(trn_xs, trn_y)
 mean_absolute_error(val_y, m.predict(val_xs))
 ```
+![Churn-DTree2-MAE]({{ site.baseurl }}/assets/images/Churn-DTree2-MAE.png)
 
 With this change, I'm now seeing an absolute error of 0.19931.  Now lets try with a Random Forest to see if adding more Decision Trees and taking the average will help our predictions.
 
@@ -158,6 +166,7 @@ rf = RandomForestClassifier(100, min_samples_leaf=5)
 rf.fit(trn_xs, trn_y);
 mean_absolute_error(val_y, rf.predict(val_xs))
 ```
+![Churn-RF1-MAE]({{ site.baseurl }}/assets/images/Churn-RF1-MAE.png)
 
 Now our error is 0.19761.  Lets see if a larger forest will further improve our results
 
@@ -166,6 +175,7 @@ rf = RandomForestClassifier(1000, min_samples_leaf=5)
 rf.fit(trn_xs, trn_y);
 mean_absolute_error(val_y, rf.predict(val_xs))
 ```
+![Churn-RF2-MAE]({{ site.baseurl }}/assets/images/Churn-RF2-MAE.png)
 
 Error is now down to 0.19591.  Let's log this model and save it to MLFlow
 

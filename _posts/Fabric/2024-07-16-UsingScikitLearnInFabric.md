@@ -202,7 +202,7 @@ You should also see a new Experiment in your workspace (you may need to refresh 
 Open the new experiment that's been created in your workspace.  Click on Save run as ML model
 ![saveMLModel]({{ site.baseurl }}/assets/images/Churn-saveMLModel.png)
 
-Click on "Select an existing ML model", select the fine_tuned folder, select the model you created and click Save.
+Click on "Select an existing ML model", select the model folder, select the model you created and click Save.
 ![existingMLModel]({{ site.baseurl }}/assets/images/Churn-existingMLModel.png)
 
 ## Load and Predict

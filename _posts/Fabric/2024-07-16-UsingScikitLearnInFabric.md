@@ -99,6 +99,7 @@ def cat_columns(df):
 dep, conts, cats = cat_columns(df)
 dep, conts, cats
 ```
+![DepCatsConts]({{ site.baseurl }}/assets/images/Churn-DepCatsConts.png)
 
 Next we split our dataframe into training and validation
 

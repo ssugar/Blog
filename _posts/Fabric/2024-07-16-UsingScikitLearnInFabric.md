@@ -276,6 +276,7 @@ df = model.transform(df)
 
 display(df)
 ```
+![prediction1]({{ site.baseurl }}/assets/images/Churn-Prediction1.png)
 
 If we want, we can flip our categorical columns back to their categories (e.g. PhoneService = ['Yes', 'No'])
 
@@ -286,6 +287,7 @@ pd_df[cats] = pd_df[cats].apply(lambda col: col.map(dict(enumerate(val_df[col.na
 
 display(pd_df)
 ```
+![prediction2]({{ site.baseurl }}/assets/images/Churn-Prediction2.png)
 
 And we can then display just the customerID, and our prediction on whether they will churn or not
 

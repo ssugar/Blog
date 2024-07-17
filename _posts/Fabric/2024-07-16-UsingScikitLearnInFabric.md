@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Predicting Customer Churn: Harnessing Scikit-Learn on Microsoft Fabric"
-date:   2024-07-17 10:28:27 -0400
+date:   2024-07-16 10:28:27 -0400
 categories: fabric, ml, scikit learn, sklearn, mlflow
 ---
 

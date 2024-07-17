@@ -71,7 +71,7 @@ Note that TotalCharges is an object datatype, that is because it actually has so
 df['TotalCharges'] = df.tenure * df.MonthlyCharges
 ```
 
-Now we'll convert SeniorCitizen to a dataframe (as it's actually going to be a categorical field) and convert TotalCharges to float.
+Now we'll convert SeniorCitizen to an object (as it's actually going to be a categorical field) and convert TotalCharges to float.
 
 ```python
 df = df.astype({'SeniorCitizen': 'object'})

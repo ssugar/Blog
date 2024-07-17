@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Predicting Customer Churn: Harnessing Scikit-Learn on Microsoft Fabric"
-date:   2024-07-16 10:28:27 -0400
+date:   2024-07-17 10:28:27 -0400
 categories: fabric, ml, scikit learn, sklearn, mlflow
 ---
 
@@ -54,7 +54,6 @@ Check for any empty values - none are found in this dataset
 
 ```python
 df.isna().sum()
-
 ```
 
 Check the dataframes data types
@@ -201,3 +200,92 @@ Create a new notebook in your workspace.  Add the following code to your noteboo
 
 Install required modules
 
+```python
+%pip install -U -q datasets scikit-learn
+```
+
+Next we're going to load the data again (usually you would have separate data for testing or to make predictions on) and prep it in the same way we did before (change datatypes, change categorical variables to their codes) with the exception of not removing the customerID field this time.  Then we'll use the validation set to make predictions with.
+
+```python
+import mlflow.sklearn
+from datasets import load_dataset
+from numpy import random
+from sklearn.model_selection import train_test_split
+import pandas as pd
+
+churn = load_dataset('scikit-learn/churn-prediction')
+df = churn['train'].to_pandas()
+df['TotalCharges'] = df.tenure * df.MonthlyCharges
+df = df.astype({'SeniorCitizen': 'object'})
+df = df.astype({'TotalCharges': 'float'})
+
+def cat_columns(df):
+    dep = 'Churn'
+    cats = [col for col in df.columns if col not in df.describe().columns]
+    conts = [col for col in df.columns if col not in df[cats]]
+    cats.remove(dep)
+    #cats.remove('customerID')
+    df[cats] = df[cats].apply(lambda x: pd.Categorical(x))
+    df = df.astype({dep: 'category'})
+    return dep, conts, cats
+
+dep, conts, cats = cat_columns(df)
+
+random.seed(42)
+trn_df,val_df = train_test_split(df, test_size=0.25)
+
+def xs_y(df):
+    xs = df[cats+conts].copy()
+    return xs,df[dep] if dep in df else None
+
+test_xs,test_y = xs_y(val_df)
+
+test_xs[cats] = test_xs[cats].apply(lambda x: x.cat.codes)
+test_y = test_y.astype('category').cat.codes
+```
+
+Now we convert the pandas dataframe to a spark dataframe, load our ML model, and generate our predictions.
+
+```python
+import pyspark
+from pyspark.sql import SparkSession
+from synapse.ml.predict import MLFlowTransformer
+
+model = MLFlowTransformer(
+    inputCols=["gender","SeniorCitizen","Partner","Dependents","PhoneService","MultipleLines","InternetService","OnlineSecurity","OnlineBackup","DeviceProtection","TechSupport","StreamingTV","StreamingMovies","Contract","PaperlessBilling","PaymentMethod","tenure","MonthlyCharges","TotalCharges"], # Your input columns here
+    outputCol="Churn", # Your new column name here
+    modelName="CustomerChurn", # Your model name here
+    modelVersion=2 # Your model version here
+)
+
+spark = SparkSession.builder.appName('pandasToSparkDF').getOrCreate()
+df = spark.createDataFrame(test_xs)
+
+df = model.transform(df)
+
+display(df)
+```
+
+If we want, we can flip our categorical columns back to their categories (e.g. PhoneService = ['Yes', 'No'])
+
+```python
+pd_df = df.toPandas()
+
+pd_df[cats] = pd_df[cats].apply(lambda col: col.map(dict(enumerate(val_df[col.name].cat.categories))))
+
+display(pd_df)
+```
+
+And we can then display just the customerID, and our prediction on whether they will churn or not
+
+```python
+predictedCustomerChurn = pd_df.loc[:,['customerID','Churn']]
+display(predictedCustomerChurn)
+```
+
+Result from the notebook should look like this:
+![modelPrediction]({{ site.baseurl }}/assets/images/Churn-modelPrediction.png)
+
+## Conclusion
+
+As we wrap up this walkthrough on predicting customer churn using scikit-learn's Random Forest Classifier on Microsoft Fabric, we hope you've gained valuable insights to apply to your data analytics projects. Remember, the key to successful churn prediction lies in understanding your data, fine-tuning your model, and continuously learning from the outcomes. With the steps outlined in this blog, you're well-equipped to tackle customer churn and drive impactful business decisions.

@@ -85,9 +85,11 @@ You should also see a new Experiment in your workspace (you may need to refresh 
 ## Save your ML Model
 
 Open the new experiment that's been created in your workspace.  Click on Save run as ML model
+
 ![saveMLModel]({{ site.baseurl }}/assets/images/Reco-saveMLModel.png)
 
 Click on "Select an existing ML model", select the model folder, select the model you created and click Save.
+
 ![existingMLModel]({{ site.baseurl }}/assets/images/Reco-existingMLModel.png)
 
 ## Load and Predict
